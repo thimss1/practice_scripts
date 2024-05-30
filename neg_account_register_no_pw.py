@@ -23,7 +23,7 @@ registration_link = WebDriverWait(driver, 10).until(
 registration_link.click()
 
 # Enter email address
-email_field = driver.find_element(By.XPATH, "//input[@id='reg_email']")
+email_field = driver.find_element(By.XPATH, "//input[@id='reg_email']")git remote
 email_field.send_keys("your_email@example.com")
 
 # Leave password field empty
