@@ -2,12 +2,12 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
-# Replace with the path to your ChromeDriver
-chromedriver_path = "path/to/chromedriver.exe"
+# Setup Chrome WebDriver
+driver = webdriver.Chrome()
 
 # Open the demo store website
-driver = webdriver.Chrome(executable_path=chromedriver_path)
 driver.get("http://demostore.supersqa.com")
 
 # Click on "My Account" (consider using more robust locators)
@@ -23,7 +23,7 @@ registration_link = WebDriverWait(driver, 10).until(
 registration_link.click()
 
 # Enter email address
-email_field = driver.find_element(By.XPATH, "//input[@id='reg_email']")
+email_field = driver.find_element(By.XPATH, "//input[@id='reg_email']")git remote
 email_field.send_keys("your_email@example.com")
 
 # Leave password field empty
@@ -40,7 +40,7 @@ try:
     print("Error message found!")
 except TimeoutException:
     print("Error message not found within 10 seconds.")
+    raise Exception("Error message not found within 10 seconds.")
 
 # Close the browser
 driver.quit()
-
